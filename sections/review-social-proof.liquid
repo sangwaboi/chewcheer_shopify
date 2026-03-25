@@ -1,0 +1,43 @@
+<div class="flex justify-center items-center flex-col mt-20 w-full min-w-0">
+  <h2 class="font-[Talina] mb-2 max-w-[min(100%,22rem)] px-4 text-center text-[26px] leading-snug tracking-0% text-[#C97064] md:mb-5 md:max-w-none md:px-0 md:text-[40px] md:leading-[100%]">
+    {{ section.settings.heading | default: "Trusted by happy dogs everywhere" }}
+  </h2>
+  <img src="{{ 'reviews-banner.png' | asset_url }}" alt="Customer reviews" class="mt-10 max-w-full h-auto">
+  <div class="font-[Talina] mt-20 max-w-[min(100%,22rem)] px-4 text-center text-[26px] leading-snug text-[#C97064] tracking-0% md:max-w-none md:px-0 md:text-[40px] md:leading-[100%]">
+    {{ section.settings.subheading | default: "because every dog deserves a happy gut" }}
+  </div>
+
+  <div class="mt-20 mb-20">
+    <a href="#shop">
+      <button class="flex flex-row gap-x-2 font-[Talina] bg-[#4F815E] text-[26px] mt-10 text-white px-5 py-3 rounded-[10px] leading-[100%] tracking-0% font-light cursor-pointer">
+        Buy chewcheer
+        {% render 'icon-arrow-right' %}
+      </button>
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Reviews / Social Proof",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trusted by happy dogs everywhere"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "because every dog deserves a happy gut"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews / Social Proof"
+    }
+  ]
+}
+{% endschema %}

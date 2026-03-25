@@ -1,0 +1,50 @@
+<div class="flex justify-center items-center flex-col w-full min-w-0">
+  <div class="font-[Talina] text-[40px] mt-10 text-[#C97064] leading-[100%] tracking-0%">
+    Not all "good boys" have good guts.
+  </div>
+
+  <div class="relative w-full bg-transparent h-screen mt-[-100px] mb-30">
+    <div class="flex justify-end items-center h-full flex-col">
+
+      {%- comment -%} Gas cloud - upper left {%- endcomment -%}
+      <img src="{{ 'gas-icon.svg' | asset_url }}" alt="" class="absolute top-[20%] left-[15%]">
+      <img src="{{ 'green-v1.png' | asset_url }}" alt="" class="absolute top-[28%] left-[18%] -z-10">
+
+      {%- comment -%} Energy battery - top center {%- endcomment -%}
+      <img src="{{ 'energy-drop.svg' | asset_url }}" alt="" class="absolute top-[10%] left-1/2 -translate-x-1/2">
+      <img src="{{ 'green-v2.png' | asset_url }}" alt="" class="absolute -z-10 top-[18%] left-1/2 -translate-x-1/2">
+
+      {%- comment -%} Poop - right side {%- endcomment -%}
+      <img src="{{ 'poop-icon.png' | asset_url }}" alt="" class="absolute top-[38%] right-[17%]">
+      <img src="{{ 'green-v3.png' | asset_url }}" alt="" class="absolute top-[46%] -z-10 right-[20%]">
+
+      {%- comment -%} Arrows pointing to dog {%- endcomment -%}
+      <img src="{{ 'arrow-3.png' | asset_url }}" alt="" class="absolute top-[48%] left-[30%] rotate-6">
+      <img src="{{ 'arrow-1.png' | asset_url }}" alt="" class="absolute top-[35%] left-1/2 -translate-x-1/2">
+      <img src="{{ 'arrow-2.png' | asset_url }}" alt="" class="absolute top-[57%] right-[33%]">
+
+      <div class="w-[450px] relative">
+        <img src="{{ 'sick-dog.png' | asset_url }}" alt="">
+        <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute -z-10 -translate-y-102 rotate-18">
+      </div>
+      <span class="font-[Talina] text-[24px] text-wrap text-center text-[#4F815E] leading-[100%] tracking-0%">
+        Most problems don't start where you see them.
+      </span>
+      <span class="font-[Talina] text-[24px] pt-2 text-wrap text-center text-[#4F815E] leading-[100%] tracking-0%">
+        They start in the gut. That's where prebiotics help.
+      </span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Bad Gut Health",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Bad Gut Health"
+    }
+  ]
+}
+{% endschema %}

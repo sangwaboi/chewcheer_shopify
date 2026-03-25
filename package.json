@@ -1,0 +1,12 @@
+{
+  "name": "chewcheer-shopify-theme",
+  "private": true,
+  "scripts": {
+    "css:build": "npx @tailwindcss/cli -i src/input.css -o assets/theme.css --minify",
+    "css:watch": "npx @tailwindcss/cli -i src/input.css -o assets/theme.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  }
+}

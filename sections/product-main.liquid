@@ -1,0 +1,270 @@
+{%- assign product = section.settings.product -%}
+{%- if product == blank -%}
+  <section id="shop" class="w-full bg-[#F5F5F5] py-20 px-6 font-[Spinnaker]">
+    <div class="max-w-6xl mx-auto text-center text-gray-500">
+      Select a product in the theme customizer to display it here.
+    </div>
+  </section>
+{%- else -%}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign has_selling_plans = false -%}
+  {%- if product.selling_plan_groups.size > 0 -%}
+    {%- assign has_selling_plans = true -%}
+    {%- assign selling_plan_group = product.selling_plan_groups.first -%}
+    {%- assign first_selling_plan = selling_plan_group.selling_plans.first -%}
+    {%- assign sp_allocation = current_variant.selling_plan_allocations | where: "selling_plan_group_id", selling_plan_group.id | first -%}
+  {%- endif -%}
+
+  <section id="shop" class="w-full bg-[#F5F5F5] py-20 px-6 font-[Spinnaker]">
+    <div class="max-w-6xl mx-auto min-w-0 bg-[#DDE5E0] rounded-3xl p-5 md:p-10">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+        {%- comment -%} LEFT — product images {%- endcomment -%}
+        <div class="flex flex-col items-center">
+          <img
+            src="{{ product.featured_image | image_url: width: 800 }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            class="w-[300px] md:w-[400px]"
+            width="400"
+            height="400"
+          >
+          <div class="flex gap-3 mt-6">
+            {%- for image in product.images limit: 4 -%}
+              <img
+                src="{{ image | image_url: width: 128 }}"
+                alt="{{ image.alt | escape }}"
+                class="w-16 h-16 cursor-pointer"
+                width="64"
+                height="64"
+              >
+            {%- endfor -%}
+          </div>
+        </div>
+
+        {%- comment -%} RIGHT — product info {%- endcomment -%}
+        <div>
+          <p class="text-xl mb-2 font-[Cookie]">
+            {{ section.settings.subtitle | default: "for better digestion & happier dogs" }}
+          </p>
+
+          <h2 class="text-4xl font-bold tracking-wider font-[Talina] text-[#66261E] sm:text-5xl md:text-6xl">
+            {{ product.title }}
+          </h2>
+
+          <div class="flex items-center gap-2 mt-2">
+            ⭐⭐⭐⭐⭐ <span class="text-sm">4.8 (190 reviews)</span>
+          </div>
+
+          <p class="mt-4 text-sm">
+            {{ section.settings.short_description | default: "A simple chew that does more than just taste good..." }}
+          </p>
+
+          {%- comment -%} SUBSCRIBE PLAN {%- endcomment -%}
+          {%- if has_selling_plans -%}
+            <div
+              id="plan-subscribe"
+              data-plan="subscribe"
+              data-variant-id="{{ current_variant.id }}"
+              data-selling-plan-id="{{ first_selling_plan.id }}"
+              class="plan-option mt-6 border-2 rounded-xl p-5 cursor-pointer transition-colors border-[#66261E] bg-[#F3E1DE]"
+            >
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div class="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
+                  <span class="plan-radio w-5 h-5 shrink-0 rounded-full border-2 flex items-center justify-center border-[#66261E]">
+                    <span class="plan-radio-dot w-2.5 h-2.5 rounded-full bg-[#66261E]"></span>
+                  </span>
+                  <span class="text-lg font-bold">Subscribe</span>
+                  <span class="bg-[#66261E] text-white text-xs font-bold px-3 py-1 rounded-md">SAVE 10%</span>
+                </div>
+                <div class="flex shrink-0 items-center gap-2 sm:ml-auto">
+                  {%- if sp_allocation -%}
+                    <span class="text-sm text-gray-400 line-through">{{ current_variant.price | money }}</span>
+                    <span class="text-2xl font-bold">{{ sp_allocation.price | money }}</span>
+                  {%- else -%}
+                    <span class="text-sm text-gray-400 line-through">₹369</span>
+                    <span class="text-2xl font-bold">₹332</span>
+                  {%- endif -%}
+                </div>
+              </div>
+
+              <div id="subscribe-expand" class="mt-4 text-sm">
+                <select id="selling-plan-select" class="w-full p-3 border border-gray-300 rounded-lg bg-white text-sm">
+                  {%- for sp in selling_plan_group.selling_plans -%}
+                    <option value="{{ sp.id }}">{{ sp.name }}</option>
+                  {%- endfor -%}
+                </select>
+
+                <p class="mt-3 text-xs text-gray-600">
+                  Subscribe and Save 30% OFF your first order and get 10% OFF on all recurring orders.
+                </p>
+                <div class="mt-6 flex flex-wrap justify-center gap-3 font-bold text-[10px] sm:justify-around sm:gap-0">
+                  <span class="w-[70px] text-center">your dog never misses a day</span>
+                  <span class="w-[70px] text-center">fast,free delivery</span>
+                  <span class="w-[70px] text-center">our best prices, always</span>
+                  <span class="w-[70px] text-center">cancel anytime, zero pressure</span>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} ONE-TIME PLAN {%- endcomment -%}
+          <div
+            id="plan-onetime"
+            data-plan="one-time"
+            data-variant-id="{{ current_variant.id }}"
+            class="plan-option mt-4 border-2 rounded-xl p-5 cursor-pointer transition-colors {% if has_selling_plans %}border-gray-200 bg-white{% else %}border-[#66261E] bg-[#F3E1DE]{% endif %}"
+          >
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex items-center gap-3">
+                <span class="plan-radio w-5 h-5 shrink-0 rounded-full border-2 flex items-center justify-center {% if has_selling_plans %}border-gray-400{% else %}border-[#66261E]{% endif %}">
+                  {%- unless has_selling_plans -%}
+                    <span class="plan-radio-dot w-2.5 h-2.5 rounded-full bg-[#66261E]"></span>
+                  {%- endunless -%}
+                </span>
+                <span class="text-lg font-bold">One-Time Purchase</span>
+              </div>
+              <span class="text-2xl font-bold sm:ml-auto">{{ current_variant.price | money }}</span>
+            </div>
+          </div>
+
+          {%- comment -%} QUANTITY + BUY NOW {%- endcomment -%}
+          <div class="mt-6 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center">
+            <div class="flex items-center justify-center gap-4 bg-white px-4 py-1 rounded-3xl sm:justify-start">
+              <button type="button" id="qty-minus" class="min-h-[42px] min-w-[44px] cursor-pointer">-</button>
+              <span id="qty-display">1</span>
+              <button type="button" id="qty-plus" class="min-h-[42px] min-w-[42px] cursor-pointer">+</button>
+            </div>
+
+            <button
+              type="button"
+              id="buy-now-btn"
+              class="min-h-[44px] w-full flex-1 bg-[#66261E] text-white py-3 rounded-3xl cursor-pointer sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              Buy now
+            </button>
+          </div>
+
+          <p id="product-error" class="mt-3 text-sm text-red-600 font-medium hidden"></p>
+        </div>
+      </div>
+
+      {%- comment -%} TABS {%- endcomment -%}
+      <div class="mt-12 flex flex-wrap justify-center gap-x-4 gap-y-2 border-b font-bold sm:justify-around sm:gap-6" id="product-tabs">
+        {%- for block in section.blocks -%}
+          <button
+            type="button"
+            data-tab="{{ block.id }}"
+            class="product-tab pb-2 text-xs cursor-pointer sm:text-base {% if forloop.first %}border-b-2 border-[#66261E]{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.tab_title | upcase }}
+          </button>
+        {%- endfor -%}
+      </div>
+
+      <div id="product-tab-panels" class="mt-6 grid md:grid-cols-2 gap-10">
+        {%- for block in section.blocks -%}
+          <div
+            data-tab-panel="{{ block.id }}"
+            class="{% unless forloop.first %}hidden{% endunless %}"
+          >
+            {%- if block.settings.tab_image != blank -%}
+              <div class="grid md:grid-cols-2 gap-10">
+                <div class="text-sm">{{ block.settings.tab_content }}</div>
+                <img src="{{ block.settings.tab_image | image_url: width: 800 }}" alt="" class="w-full">
+              </div>
+            {%- else -%}
+              <div class="text-sm">{{ block.settings.tab_content }}</div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Main",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "for better digestion & happier dogs"
+    },
+    {
+      "type": "text",
+      "id": "short_description",
+      "label": "Short description",
+      "default": "A simple chew that does more than just taste good..."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Product Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab title",
+          "default": "Description"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content",
+          "label": "Tab content"
+        },
+        {
+          "type": "image_picker",
+          "id": "tab_image",
+          "label": "Tab image (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Main",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Description",
+            "tab_content": "<p>Chewcheer's Prebiotic Inulin Sticks are thoughtfully made to support your dog's digestive health in the most natural way possible. Powered by prebiotic fibre from chicory root and blended with real ingredients like pumpkin, oats, and chicken, each chew works to nourish beneficial gut bacteria and promote smoother digestion.</p><p>This helps reduce bloating, regulate stools, and improve overall gut balance. Free from artificial fillers and unnecessary additives, these sticks focus on what truly matters — giving your dog a healthier gut, steady energy, and a noticeable improvement in everyday comfort and happiness.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Ingredients",
+            "tab_content": "<p>Ingredients content...</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Feeding",
+            "tab_content": "<p>Feeding guide...</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Details",
+            "tab_content": "<p>Additional details...</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

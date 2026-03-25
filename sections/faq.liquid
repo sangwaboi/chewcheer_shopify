@@ -1,0 +1,99 @@
+<div class="flex justify-center items-center flex-col w-full min-w-0">
+  <div class="w-full max-w-2xl mt-24 mb-20 px-6 relative">
+    <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute -z-10 -translate-y-[230px] -translate-x-[295px] rotate-[-15deg]">
+    <h2 class="font-[Talina] mx-auto mb-10 max-w-[min(100%,22rem)] px-4 text-center text-[26px] font-bold leading-snug tracking-wider text-black md:max-w-none md:px-0 md:text-[42px] md:leading-tight">
+      Curious?<br>So were we.
+    </h2>
+
+    <div class="flex flex-col gap-3" id="faq-accordion">
+      {%- for block in section.blocks -%}
+        <div class="border-2 border-[#4F815E] rounded-xl overflow-hidden transition-all duration-300" {{ block.shopify_attributes }}>
+          <button
+            type="button"
+            class="faq-toggle w-full flex items-center justify-between px-6 py-4 cursor-pointer bg-white hover:bg-gray-50 transition-colors min-h-[48px]"
+            aria-expanded="false"
+          >
+            <span class="font-[Spinnaker] text-base text-left text-gray-800">
+              {{ block.settings.question }}
+            </span>
+            <span class="faq-icon-down">{% render 'icon-chevron-down' %}</span>
+            <span class="faq-icon-up hidden">{% render 'icon-chevron-up' %}</span>
+          </button>
+
+          <div class="faq-answer overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+            <p class="px-6 pb-5 text-sm font-[Spinnaker] text-gray-600 leading-relaxed">
+              {{ block.settings.answer }}
+            </p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What exactly does ChewCheer do?",
+            "answer": "<p>ChewCheer contains prebiotic ingredients that help support healthy gut bacteria, which improves digestion and overall gut balance in dogs.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How many sticks should I give my dog?",
+            "answer": "<p>We recommend 1 stick per day for small dogs (under 10kg) and 2 sticks per day for larger dogs. Always ensure fresh water is available.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is ChewCheer safe for daily use?",
+            "answer": "<p>Yes! ChewCheer is made with all-natural ingredients and is designed to be a daily supplement for your dog's digestive health.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long before I see results?",
+            "answer": "<p>Most pet parents notice improvements in their dog's digestion within 2-4 weeks of daily use. Every dog is different, so results may vary.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can puppies have ChewCheer?",
+            "answer": "<p>ChewCheer is recommended for dogs 6 months and older. For younger puppies, please consult your veterinarian first.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

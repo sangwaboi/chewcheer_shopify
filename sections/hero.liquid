@@ -1,0 +1,122 @@
+<div class="relative">
+  {%- comment -%} Paw decorations around hero {%- endcomment -%}
+  <div class="absolute w-[600px]">
+    <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute translate-x-70 -translate-y-22 -z-10">
+  </div>
+  <div class="absolute w-[350px]">
+    <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute rotate-45 -translate-y-15 -translate-x-40 -z-10">
+  </div>
+  <div class="absolute w-[400px]">
+    <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute rotate-20 translate-x-315">
+  </div>
+
+  <section class="relative w-full min-h-screen min-w-0 overflow-hidden">
+    {%- comment -%} Paw watermarks {%- endcomment -%}
+    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute top-20 left-10 w-32 opacity-10 max-md:left-4 max-md:w-24" alt="">
+    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute top-40 right-20 w-24 opacity-10 rotate-12 max-md:right-4 max-md:w-20" alt="">
+    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute bottom-40 left-20 w-40 opacity-10 rotate-6 max-md:hidden md:block" alt="">
+    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute top-1/2 right-10 w-28 opacity-10 -rotate-12 max-md:right-4 max-md:w-24" alt="">
+
+    <div class="relative z-10 flex h-full w-full min-w-0 items-center justify-center max-md:px-3 md:px-0">
+      <div class="relative flex w-full max-w-[min(100%,32rem)] flex-col items-center text-center md:w-auto md:max-w-none">
+
+        <h1 class="mt-3 px-1 font-[Talina] font-semi-bold text-shadow-lg text-white max-md:text-4xl max-md:whitespace-normal md:px-0 md:text-6xl md:whitespace-nowrap lg:text-7xl">
+          {{ section.settings.heading | default: "Tiny Chew. Big Cheer." }}
+        </h1>
+
+        <p class="mt-4 max-w-xl px-1 font-[Spinnaker] text-white/80 max-md:text-base md:px-0 md:text-lg">
+          {{ section.settings.subheading | default: "Prebiotic chew sticks that keep your dog's gut healthy and digestion smooth." }}
+        </p>
+
+        {%- comment -%} Mobile: quote + CTA {%- endcomment -%}
+        <div class="mt-6 w-full max-w-sm text-center font-[Cookie] text-3xl text-[#4F815E] md:hidden">
+          because your dog's tummy deserves better.
+        </div>
+
+        <img
+          src="{{ 'hero-product.svg' | asset_url }}"
+          class="relative z-10 w-[min(100%,320px)] drop-shadow-2xl md:w-[420px] lg:w-[500px]"
+          alt="ChewCheer product"
+        >
+
+        {%- comment -%} Mobile CTA {%- endcomment -%}
+        <div class="mt-6 flex w-full max-w-sm flex-col items-center gap-3 md:hidden">
+          <a
+            href="#shop"
+            class="flex items-center gap-2 rounded-xl bg-[#4F815E] px-6 py-3 font-extrabold no-underline"
+          >
+            <span class="font-[Talina] text-xl tracking-wider text-white sm:text-[26px]">Buy chewcheer</span>
+            {% render 'icon-arrow-right' %}
+          </a>
+          <ul class="text-left font-[Spinnaker] text-sm text-[#4F815E] sm:text-base">
+            <li><img src="{{ 'check-icon.png' | asset_url }}" class="mr-2 inline" alt="">Vet friendly</li>
+            <li><img src="{{ 'check-icon.png' | asset_url }}" class="mr-2 inline" alt="">Natural ingredients</li>
+            <li><img src="{{ 'check-icon.png' | asset_url }}" class="mr-2 inline" alt="">Loved by dogs</li>
+          </ul>
+        </div>
+
+        {%- comment -%} Desktop: quote + curved arrow {%- endcomment -%}
+        <div class="absolute bottom-[130px] left-[-120px] hidden w-[220px] text-center font-[Cookie] text-3xl text-[#4F815E] md:block">
+          <div class="relative">
+            <div class="flex flex-col">
+              <span>because your dog's</span>
+              <span>tummy deserves better.</span>
+            </div>
+            <div class="absolute right-[-90px] bottom-[40px]">
+              <svg width="153" height="89" viewBox="0 0 153 89" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M3.2797 53.9654L15.0517 47.5627M3.2797 53.9654L1.49657 39.8401M3.2797 53.9654C19.7058 15.1125 66.5983 -14.4403 100.438 10.9934C134.278 36.4271 101.72 85.5633 85.8583 71.7868C69.9944 58.0109 100.934 28.8681 120.706 33.7038C140.478 38.5398 141.963 57.2327 136.108 72.4394C130.253 87.646 118.059 89.9981 116.812 82.236C115.564 74.4719 136.881 68.3159 150.757 86.5422"
+                  stroke="#4F815E"
+                  stroke-width="3"
+                  stroke-miterlimit="16"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {%- comment -%} Desktop CTA {%- endcomment -%}
+        <div class="absolute bottom-[100px] right-[-60px] hidden flex flex-col items-start gap-3 md:flex">
+          <a href="#shop">
+            <div class="flex items-center gap-2 rounded-xl bg-[#4F815E] px-6 py-3 font-extrabold no-underline cursor-pointer">
+              <span class="font-[Talina] text-[26px] tracking-wider text-white">Buy chewcheer</span>
+              {% render 'icon-arrow-right' %}
+            </div>
+          </a>
+          <ul class="text-left text-[#4F815E] font-[Spinnaker]">
+            <li><img src="{{ 'check-icon.png' | asset_url }}" class="inline mr-2" alt="">Vet friendly</li>
+            <li><img src="{{ 'check-icon.png' | asset_url }}" class="inline mr-2" alt="">Natural ingredients</li>
+            <li><img src="{{ 'check-icon.png' | asset_url }}" class="inline mr-2" alt="">Loved by dogs</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tiny Chew. Big Cheer."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Prebiotic chew sticks that keep your dog's gut healthy and digestion smooth."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

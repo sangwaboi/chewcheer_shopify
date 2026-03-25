@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@source "../layout/*.liquid";
+@source "../sections/*.liquid";
+@source "../snippets/*.liquid";
+@source "../templates/*.liquid";
+
+@theme {
+  --color-brand-cream: #f9f6f0;
+  --color-brand-green: #8fa082;
+  --color-brand-coral: #d46b53;
+  --color-brand-dark: #3d2b1f;
+  --color-brand-yellow: #e8c37d;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand-cream);
+    color: var(--color-brand-dark);
+  }
+}
+
+@font-face {
+  font-family: "Talina";
+  src: url("Talina-DEMO.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cookie";
+  src: url("Cookie-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

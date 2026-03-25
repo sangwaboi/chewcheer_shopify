@@ -1,0 +1,84 @@
+<div class="w-screen relative left-1/2 -translate-x-1/2 bg-[#F5F5F5] py-20 mt-20 overflow-hidden">
+  {%- comment -%} Sad dog — left {%- endcomment -%}
+  <div class="absolute left-30 top-1/2 -translate-y-1/2 w-[240px] h-[240px] flex items-center justify-center">
+    <img src="{{ 'sad-dog.svg' | asset_url }}" alt="">
+  </div>
+  <div class="absolute -z-10 h-[370px] w-[370px] -translate-y-[-40px] -translate-x-[-60px] rotate-10">
+    <img src="{{ 'paw-green.png' | asset_url }}" alt="">
+  </div>
+
+  {%- comment -%} Happy dog — right {%- endcomment -%}
+  <div class="absolute right-30 top-1/2 -translate-y-1/2 w-[240px] h-[240px] flex items-center justify-center">
+    <img src="{{ 'happy-dog.png' | asset_url }}" alt="">
+  </div>
+  <div class="absolute h-[370px] w-[370px] -z-10 right-18 top-1/2 -translate-y-[66%]">
+    <img src="{{ 'paw-green.png' | asset_url }}" alt="">
+  </div>
+
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="font-[Talina] text-[40px] text-[#C97064] text-center leading-tight tracking-wider">
+      From tummy troubles to tail wags
+    </h2>
+
+    <div class="grid grid-cols-[1fr_auto_1fr] gap-6 items-center mt-14">
+
+      {%- comment -%} Before {%- endcomment -%}
+      <div class="flex items-center justify-center">
+        <div>
+          <p class="font-[Spinnaker] text-xl text-gray-500 font-bold mb-4 text-nowrap">You've probably noticed this...</p>
+          <ul class="space-y-2 text-center font-[Spinnaker] text-sm text-gray-500">
+            <div>Tummy acting weird</div>
+            <div>Poop all over the place</div>
+            <div>Gassy after meals</div>
+            <div>Low energy days</div>
+          </ul>
+        </div>
+      </div>
+
+      {%- comment -%} Center stick {%- endcomment -%}
+      <div class="flex flex-col items-center">
+        <div class="w-[80px] h-[200px] flex items-center justify-center">
+          <span class="text-gray-400 text-xs text-center font-[Spinnaker] relative">
+            <img src="{{ 'stick2.png' | asset_url }}" alt="">
+            <img src="{{ 'round-arrow.png' | asset_url }}" alt="" class="absolute top-13 left-0">
+          </span>
+        </div>
+        <p class="font-[Cookie] text-[20px] text-[#4F815E] mt-2 text-nowrap">This is where it changes</p>
+      </div>
+
+      {%- comment -%} After {%- endcomment -%}
+      <div class="flex items-center justify-center">
+        <div>
+          <p class="font-[Spinnaker] text-xl text-nowrap text-[#4F815E] font-bold mb-4">This is how it should be.</p>
+          <ul class="space-y-4 font-[Spinnaker] text-center text-sm text-[#4F815E] font-semibold">
+            <div>Smooth, easy digestion</div>
+            <div>Consistent, healthy poop</div>
+            <div>More energy, more play</div>
+            <div>Tail that won't stop wagging</div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center mt-30">
+      <a href="#shop">
+        <button class="flex flex-row items-center gap-x-2 font-[Talina] bg-[#4F815E] text-[26px] text-white px-6 py-3 rounded-[10px] leading-[100%] tracking-0% font-light cursor-pointer">
+          Buy chewcheer
+          {% render 'icon-arrow-right' %}
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Tummy Comparison",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Tummy Comparison"
+    }
+  ]
+}
+{% endschema %}

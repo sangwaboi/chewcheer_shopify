@@ -1,0 +1,71 @@
+<div class="flex justify-center items-center flex-col w-full min-w-0">
+  <div class="border-5 bg-[#E5C68761] border-[#66261E] w-7xl h-fit rounded-[44px] px-10 py-10">
+    <div class="font-[Talina] text-[40px] mb-10 text-[#66261E] leading-[100%] tracking-0% text-center">
+      A Happier Gut In 3 Simple Steps
+    </div>
+
+    <div class="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-start gap-4">
+
+      {%- comment -%} Step 1 {%- endcomment -%}
+      <div class="flex flex-col items-center text-center">
+        <div class="h-[250px] flex items-end justify-center mb-4 relative">
+          <img src="{{ 'good-bacteria.png' | asset_url }}" alt="" class="max-h-full object-contain">
+          <div class="w-[200px] h-[180px] absolute">
+            <img src="{{ 'vector-0.png' | asset_url }}" alt="" class="absolute -z-10 -translate-y-12 translate-x-2">
+          </div>
+        </div>
+        <span class="font-[Talina] text-[24px] text-[#66261E] leading-tight mt-2">Feed Good Bacteria</span>
+        <span class="font-[Spinnaker] text-[18px] text-[#C97064] mt-1 px-4">Feeds the good bacteria your dog actually needs.</span>
+        <span class="font-[Talina] text-[28px] text-[#66261E] mt-6 w-10 h-10 flex items-center justify-center rounded-full border-3 border-[#66261E]">1</span>
+      </div>
+
+      <div class="flex items-center h-[250px]">
+        <img src="{{ 'arrow-right-step.png' | asset_url }}" alt="">
+      </div>
+
+      {%- comment -%} Step 2 {%- endcomment -%}
+      <div class="flex flex-col items-center text-center">
+        <div class="h-[250px] flex items-end justify-center mb-4 relative">
+          <img src="{{ 'good-gut.png' | asset_url }}" alt="" class="max-h-full object-contain">
+          <div class="w-[400px] h-[400px] absolute">
+            <img src="{{ 'paw-brown.png' | asset_url }}" alt="" class="absolute -z-10 translate-y-6 rotate-18">
+          </div>
+        </div>
+        <span class="font-[Talina] text-[24px] text-[#66261E] leading-tight mt-2">Balance Digestion</span>
+        <span class="font-[Spinnaker] text-[18px] text-[#C97064] mt-1 px-4">Helps digestion do its job. No drama.</span>
+        <span class="font-[Talina] text-[28px] text-[#66261E] mt-6 w-10 h-10 flex items-center justify-center rounded-full border-3 border-[#66261E]">2</span>
+      </div>
+
+      <div class="flex items-center h-[250px]">
+        <img src="{{ 'arrow-right-step.png' | asset_url }}" alt="">
+      </div>
+
+      {%- comment -%} Step 3 {%- endcomment -%}
+      <div class="flex flex-col items-center text-center">
+        <div class="h-[250px] flex items-end justify-center mb-4 relative">
+          <img src="{{ 'happy-healthy-dog.png' | asset_url }}" alt="" class="max-h-full object-contain">
+          <div class="w-[200px] h-[180px] absolute">
+            <img src="{{ 'vector-1.png' | asset_url }}" alt="" class="absolute -z-10 -translate-y-20 translate-x-4">
+          </div>
+        </div>
+        <span class="font-[Talina] text-[24px] text-[#66261E] leading-tight mt-2 text-nowrap">Happier, Healthier Dogs.</span>
+        <span class="font-[Spinnaker] text-[18px] text-[#C97064] mt-1 px-4">Less gas. Better poop. More zoomies.</span>
+        <span class="font-[Talina] text-[28px] text-[#66261E] mt-6 w-10 h-10 flex items-center justify-center rounded-full border-3 border-[#66261E]">3</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="font-[Cookie] text-2xl mt-4 mb-30">It's not magic. It's just good gut health.</div>
+</div>
+
+{% schema %}
+{
+  "name": "Happier Gut Steps",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Happier Gut Steps"
+    }
+  ]
+}
+{% endschema %}
