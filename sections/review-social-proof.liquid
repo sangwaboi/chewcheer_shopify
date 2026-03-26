@@ -2,7 +2,36 @@
   <h2 class="font-[Talina] mb-2 max-w-[min(100%,22rem)] px-4 text-center text-[26px] leading-snug tracking-0% text-[#C97064] md:mb-5 md:max-w-none md:px-0 md:text-[40px] md:leading-[100%]">
     {{ section.settings.heading | default: "Trusted by happy dogs everywhere" }}
   </h2>
-  <img src="{{ 'reviews-banner.png' | asset_url }}" alt="Customer reviews" class="mt-10 max-w-full h-auto">
+
+  <!-- Review Carousel (dequeue style) -->
+  <div class="flex flex-row items-center gap-x-5 mt-20 mb-20 px-4">
+    <!-- Left chevron -->
+    <button
+      id="review-carousel-prev"
+      type="button"
+      aria-label="Previous review"
+      class="cursor-pointer shrink-0"
+    >
+      {% render 'icon-chevron-left' %}
+    </button>
+
+    <!-- Visible cards container -->
+    <div class="flex flex-row items-center overflow-hidden w-full max-w-[1150px]" id="review-carousel-track">
+      <!-- Tailwind safelist for JS-rendered classes -->
+      <span class="hidden w-[380px] h-[480px] shrink-0 hover:scale-[1.04] object-contain"></span>
+    </div>
+
+    <!-- Right chevron -->
+    <button
+      id="review-carousel-next"
+      type="button"
+      aria-label="Next review"
+      class="cursor-pointer shrink-0"
+    >
+      {% render 'icon-chevron-right' %}
+    </button>
+  </div>
+
   <div class="font-[Talina] mt-20 max-w-[min(100%,22rem)] px-4 text-center text-[26px] leading-snug text-[#C97064] tracking-0% md:max-w-none md:px-0 md:text-[40px] md:leading-[100%]">
     {{ section.settings.subheading | default: "because every dog deserves a happy gut" }}
   </div>
@@ -10,12 +39,21 @@
   <div class="mt-20 mb-20">
     <a href="#shop">
       <button class="flex flex-row gap-x-2 font-[Talina] bg-[#4F815E] text-[26px] mt-10 text-white px-5 py-3 rounded-[10px] leading-[100%] tracking-0% font-light cursor-pointer">
-        Buy chewcheer
+        Pre order chewcheer
         {% render 'icon-arrow-right' %}
       </button>
     </a>
   </div>
 </div>
+
+<!-- Pass asset URLs to JS -->
+<script>
+  window.__reviewImages = [
+    "{{ 'milo.svg' | asset_url }}",
+    "{{ 'max.svg' | asset_url }}",
+    "{{ 'coco.svg' | asset_url }}"
+  ];
+</script>
 
 {% schema %}
 {

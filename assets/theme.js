@@ -242,6 +242,71 @@
   }
 
   /* ─────────────────────────────────────────────
+     7. REVIEW CAROUSEL (dequeue / circular rotation)
+     ────────────────────────────────────────────── */
+  function initReviewCarousel() {
+    var track = document.getElementById('review-carousel-track');
+    var prevBtn = document.getElementById('review-carousel-prev');
+    var nextBtn = document.getElementById('review-carousel-next');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    // Image URLs passed from Liquid via window.__reviewImages
+    var imgs = (window.__reviewImages || []).slice();
+    if (imgs.length === 0) return;
+
+    function render() {
+      track.innerHTML = '';
+      imgs.forEach(function (src) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Customer review';
+        img.className = 'w-[380px] h-[480px] shrink-0 transition-all duration-300 hover:scale-[1.04] object-contain';
+        track.appendChild(img);
+      });
+    }
+
+    function moveLeft() {
+      var first = imgs.shift();
+      if (first !== undefined) imgs.push(first);
+      render();
+    }
+
+    function moveRight() {
+      var last = imgs.pop();
+      if (last !== undefined) imgs.unshift(last);
+      render();
+    }
+
+    prevBtn.addEventListener('click', function () {
+      moveLeft();
+      resetAutoplay();
+    });
+
+    nextBtn.addEventListener('click', function () {
+      moveRight();
+      resetAutoplay();
+    });
+
+    // Autoplay every 3 seconds
+    var autoplayId = null;
+
+    function startAutoplay() {
+      autoplayId = setInterval(function () {
+        moveRight();
+      }, 3000);
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayId);
+      startAutoplay();
+    }
+
+    // Initial render & start
+    render();
+    startAutoplay();
+  }
+
+  /* ─────────────────────────────────────────────
      INIT
      ────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
@@ -251,5 +316,6 @@
     initPlanSelection();
     initQuantity();
     initBuyNow();
+    initReviewCarousel();
   });
 })();

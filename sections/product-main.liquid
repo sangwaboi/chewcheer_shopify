@@ -23,23 +23,54 @@
         {%- comment -%} LEFT — product images {%- endcomment -%}
         <div class="flex flex-col items-center">
           <img
+            id="product-main-image"
             src="{{ product.featured_image | image_url: width: 800 }}"
             alt="{{ product.featured_image.alt | escape }}"
-            class="w-[300px] md:w-[400px]"
+            class="w-[300px] md:w-[400px] transition-opacity duration-300"
             width="400"
             height="400"
           >
-          <div class="flex gap-3 mt-6">
+          <div class="flex gap-3 mt-6" id="product-thumbnails">
             {%- for image in product.images limit: 4 -%}
               <img
                 src="{{ image | image_url: width: 128 }}"
+                data-full-src="{{ image | image_url: width: 800 }}"
                 alt="{{ image.alt | escape }}"
-                class="w-16 h-16 cursor-pointer"
+                class="product-thumb w-16 h-16 cursor-pointer rounded-md border-2 transition-all duration-200 hover:opacity-80 {% if forloop.first %}border-[#66261E]{% else %}border-transparent{% endif %}"
                 width="64"
                 height="64"
               >
             {%- endfor -%}
           </div>
+
+          <script>
+            (function () {
+              var mainImg = document.getElementById('product-main-image');
+              var thumbs = document.getElementById('product-thumbnails');
+              if (!mainImg || !thumbs) return;
+
+              thumbs.addEventListener('click', function (e) {
+                var thumb = e.target.closest('.product-thumb');
+                if (!thumb || !thumb.dataset.fullSrc) return;
+
+                // Fade out, swap, fade in
+                mainImg.style.opacity = '0';
+                setTimeout(function () {
+                  mainImg.src = thumb.dataset.fullSrc;
+                  mainImg.alt = thumb.alt;
+                  mainImg.style.opacity = '1';
+                }, 150);
+
+                // Update active border
+                thumbs.querySelectorAll('.product-thumb').forEach(function (t) {
+                  t.classList.remove('border-[#66261E]');
+                  t.classList.add('border-transparent');
+                });
+                thumb.classList.remove('border-transparent');
+                thumb.classList.add('border-[#66261E]');
+              });
+            })();
+          </script>
         </div>
 
         {%- comment -%} RIGHT — product info {%- endcomment -%}
@@ -141,7 +172,7 @@
               id="buy-now-btn"
               class="min-h-[44px] w-full flex-1 bg-[#66261E] text-white py-3 rounded-3xl cursor-pointer sm:w-auto disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Buy now
+              Pre order now
             </button>
           </div>
 
@@ -163,23 +194,54 @@
         {%- endfor -%}
       </div>
 
-      <div id="product-tab-panels" class="mt-6 grid md:grid-cols-2 gap-10">
+      <div id="product-tab-panels" class="mt-6">
         {%- for block in section.blocks -%}
           <div
             data-tab-panel="{{ block.id }}"
             class="{% unless forloop.first %}hidden{% endunless %}"
           >
-            {%- if block.settings.tab_image != blank -%}
-              <div class="grid md:grid-cols-2 gap-10">
+            {%- if forloop.first -%}
+              <!-- Description tab: 2-column with plant illustration -->
+              <div class="grid md:grid-cols-2 gap-10 items-center">
                 <div class="text-sm">{{ block.settings.tab_content }}</div>
-                <img src="{{ block.settings.tab_image | image_url: width: 800 }}" alt="" class="w-full">
+                {%- if block.settings.tab_image != blank -%}
+                  <img src="{{ block.settings.tab_image | image_url: width: 800 }}" alt="" class="w-full rounded-xl">
+                {%- else -%}
+                  <img src="{{ 'plant-illustration.svg' | asset_url }}" alt="Plant illustration" class="w-full max-w-[450px] ml-auto">
+                {%- endif -%}
               </div>
             {%- else -%}
+              <!-- Other tabs: text only -->
               <div class="text-sm">{{ block.settings.tab_content }}</div>
             {%- endif -%}
           </div>
         {%- endfor -%}
       </div>
+
+      <!-- Inline tab switcher (event delegation — survives Shopify hot reload) -->
+      <script>
+        (function () {
+          var tabContainer = document.getElementById('product-tabs');
+          var panelContainer = document.getElementById('product-tab-panels');
+          if (!tabContainer || !panelContainer) return;
+
+          tabContainer.addEventListener('click', function (e) {
+            var btn = e.target.closest('.product-tab');
+            if (!btn) return;
+
+            var id = btn.dataset.tab;
+
+            tabContainer.querySelectorAll('.product-tab').forEach(function (t) {
+              t.classList.remove('border-b-2', 'border-[#66261E]');
+            });
+            btn.classList.add('border-b-2', 'border-[#66261E]');
+
+            panelContainer.querySelectorAll('[data-tab-panel]').forEach(function (p) {
+              p.classList.toggle('hidden', p.dataset.tabPanel !== id);
+            });
+          });
+        })();
+      </script>
 
     </div>
   </section>
