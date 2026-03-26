@@ -1,8 +1,9 @@
 @import "tailwindcss";
-@source "../layout/*.liquid";
-@source "../sections/*.liquid";
-@source "../snippets/*.liquid";
-@source "../templates/*.liquid";
+@source "../layout";
+@source "../sections";
+@source "../snippets";
+@source "../templates";
+@source "../assets/theme.js";
 
 @theme {
   --color-brand-cream: #f9f6f0;
