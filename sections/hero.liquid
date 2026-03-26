@@ -4,7 +4,11 @@
     <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute translate-x-70 -translate-y-22 -z-10">
   </div>
   <div class="absolute w-[350px]">
-    <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute rotate-45 -translate-y-15 -translate-x-40 -z-10">
+    <img
+      src="{{ 'paw-green.png' | asset_url }}"
+      alt=""
+      class="absolute rotate-45 -translate-y-15 -translate-x-40 -z-10"
+    >
   </div>
   <div class="absolute w-[400px]">
     <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute rotate-20 translate-x-315">
@@ -12,20 +16,38 @@
 
   <section class="relative w-full min-h-screen min-w-0 overflow-hidden">
     {%- comment -%} Paw watermarks {%- endcomment -%}
-    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute top-20 left-10 w-32 opacity-10 max-md:left-4 max-md:w-24" alt="">
-    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute top-40 right-20 w-24 opacity-10 rotate-12 max-md:right-4 max-md:w-20" alt="">
-    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute bottom-40 left-20 w-40 opacity-10 rotate-6 max-md:hidden md:block" alt="">
-    <img src="{{ 'paw-watermark.svg' | asset_url }}" class="absolute top-1/2 right-10 w-28 opacity-10 -rotate-12 max-md:right-4 max-md:w-24" alt="">
+    <img
+      src="{{ 'paw-watermark.svg' | asset_url }}"
+      class="absolute top-20 left-10 w-32 opacity-10 max-md:left-4 max-md:w-24"
+      alt=""
+    >
+    <img
+      src="{{ 'paw-watermark.svg' | asset_url }}"
+      class="absolute top-40 right-20 w-24 opacity-10 rotate-12 max-md:right-4 max-md:w-20"
+      alt=""
+    >
+    <img
+      src="{{ 'paw-watermark.svg' | asset_url }}"
+      class="absolute bottom-40 left-20 w-40 opacity-10 rotate-6 max-md:hidden md:block"
+      alt=""
+    >
+    <img
+      src="{{ 'paw-watermark.svg' | asset_url }}"
+      class="absolute top-1/2 right-10 w-28 opacity-10 -rotate-12 max-md:right-4 max-md:w-24"
+      alt=""
+    >
 
     <div class="relative z-10 flex h-full w-full min-w-0 items-center justify-center max-md:px-3 md:px-0">
       <div class="relative flex w-full max-w-[min(100%,32rem)] flex-col items-center text-center md:w-auto md:max-w-none">
-
         <h1 class="mt-3 px-1 font-[Talina] font-semi-bold text-shadow-lg text-white max-md:text-4xl max-md:whitespace-normal md:px-0 md:text-6xl md:whitespace-nowrap lg:text-7xl">
-          {{ section.settings.heading | default: "Tiny Chew. Big Cheer." }}
+          {{ section.settings.heading | default: 'Tiny Chew. Big Cheer.' }}
         </h1>
 
         <p class="mt-4 max-w-xl px-1 font-[Spinnaker] text-white/80 max-md:text-base md:px-0 md:text-lg">
-          {{ section.settings.subheading | default: "Prebiotic chew sticks that keep your dog's gut healthy and digestion smooth." }}
+          {{
+            section.settings.subheading
+            | default: "Prebiotic chew sticks that keep your dog's gut healthy and digestion smooth."
+          }}
         </p>
 
         {%- comment -%} Mobile: quote + CTA {%- endcomment -%}
@@ -45,7 +67,7 @@
             href="#shop"
             class="flex items-center gap-2 rounded-xl bg-[#4F815E] px-6 py-3 font-extrabold no-underline"
           >
-            <span class="font-[Talina] text-xl tracking-wider text-white sm:text-[26px]">Pre order chewcheer</span>
+            <span class="font-[Talina] text-xl tracking-wider text-white sm:text-[26px]">Pre-order now!</span>
             {% render 'icon-arrow-right' %}
           </a>
           <ul class="text-left font-[Spinnaker] text-sm text-[#4F815E] sm:text-base">
@@ -80,7 +102,7 @@
         <div class="absolute bottom-[100px] right-[-160px] hidden flex flex-col items-start gap-3 md:flex">
           <a href="#shop">
             <div class="flex items-center gap-2 rounded-xl bg-[#4F815E] px-6 py-3 font-extrabold no-underline cursor-pointer">
-              <span class="font-[Talina] text-[26px] tracking-wider text-white">Pre order chewcheer</span>
+              <span class="font-[Talina] text-[26px] tracking-wider text-white">Pre-order now!</span>
               {% render 'icon-arrow-right' %}
             </div>
           </a>
@@ -90,7 +112,6 @@
             <li><img src="{{ 'check-icon.png' | asset_url }}" class="inline mr-2" alt="">Loved by dogs</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
