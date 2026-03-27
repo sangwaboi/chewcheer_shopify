@@ -1,0 +1,458 @@
+{%- comment -%}
+  Milo Floating Chat Widget
+  – Sticky circle at bottom-right corner
+  – Expands into the full chat panel on click
+{%- endcomment -%}
+
+<!-- Floating Chat Toggle Button -->
+<div id="milo-chat-wrapper" class="milo-chat-wrapper">
+  <!-- Chat Toggle Bubble -->
+  <button
+    id="milo-chat-toggle"
+    class="milo-chat-bubble"
+    aria-label="Chat with Milo"
+    type="button"
+  >
+    <!-- Milo avatar (shown when chat is closed) -->
+    <span class="milo-bubble-avatar" id="milo-bubble-avatar">
+      <img src="{{ 'milo-avatar.png' | asset_url }}" alt="Milo" width="40" height="40">
+    </span>
+    <!-- Close icon (shown when chat is open) -->
+    <span class="milo-bubble-close" id="milo-bubble-close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </span>
+    <!-- Pulse ring -->
+    <span class="milo-bubble-pulse"></span>
+  </button>
+
+  <!-- Chat Panel -->
+  <div id="milo-chat-panel" class="milo-chat-panel">
+    <!-- Header -->
+    <div class="milo-panel-header">
+      <div class="milo-panel-header-avatar">
+        <img src="{{ 'milo-avatar.png' | asset_url }}" alt="Milo" width="36" height="36">
+      </div>
+      <div class="milo-panel-header-info">
+        <span class="milo-panel-header-name">Milo</span>
+        <span class="milo-panel-header-status"></span>
+      </div>
+    </div>
+
+    <!-- Chat Body -->
+    <div class="milo-panel-body">
+      <div class="milo-chat-message milo-chat-message--bot">
+        <p>Hey! What's up with your dog today? 🐶</p>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="milo-panel-input-area">
+      <div class="milo-panel-input-row">
+        <input
+          type="text"
+          placeholder="Type a message…"
+          class="milo-panel-input"
+          id="milo-panel-input"
+        >
+        <button class="milo-panel-send" type="button" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Suggestions -->
+      <div class="milo-panel-suggestions">
+        <button class="milo-suggestion-chip" type="button">How long before result?</button>
+        <button class="milo-suggestion-chip" type="button">Can I give it daily?</button>
+        <button class="milo-suggestion-chip" type="button">Is it safe for puppies?</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ═══════════════════════════════════════
+     Milo Floating Chat Widget Styles
+     ═══════════════════════════════════════ */
+
+  .milo-chat-wrapper {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    font-family: 'Spinnaker', sans-serif;
+  }
+
+  /* ── Toggle Bubble ──────────────────── */
+  .milo-chat-bubble {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4F815E 0%, #3d6a4a 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 4px 20px rgba(79, 129, 94, 0.4),
+      0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.3s ease;
+    z-index: 10;
+  }
+
+  .milo-chat-bubble:hover {
+    transform: scale(1.08);
+    box-shadow:
+      0 6px 28px rgba(79, 129, 94, 0.5),
+      0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .milo-chat-bubble:active {
+    transform: scale(0.95);
+  }
+
+  .milo-bubble-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .milo-bubble-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .milo-bubble-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  /* Pulse animation */
+  .milo-bubble-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(79, 129, 94, 0.3);
+    animation: miloPulse 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    pointer-events: none;
+  }
+
+  @keyframes miloPulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+  /* ── Chat Panel ─────────────────────── */
+  .milo-chat-panel {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 360px;
+    max-height: 520px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.15),
+      0 4px 16px rgba(79, 129, 94, 0.1);
+    border: 2px solid #4F815E;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px) scale(0.95);
+    transform-origin: bottom right;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.35s,
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ── Panel Header ───────────────────── */
+  .milo-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #4F815E 0%, #3d6a4a 100%);
+    color: #fff;
+  }
+
+  .milo-panel-header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .milo-panel-header-avatar img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .milo-panel-header-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .milo-panel-header-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .milo-panel-header-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #90ee90;
+    box-shadow: 0 0 6px rgba(144, 238, 144, 0.6);
+    animation: miloOnline 2s ease-in-out infinite;
+  }
+
+  @keyframes miloOnline {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* ── Chat Body ──────────────────────── */
+  .milo-panel-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    min-height: 120px;
+    background: #fafcf8;
+  }
+
+  .milo-chat-message {
+    max-width: 85%;
+    animation: miloMsgIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .milo-chat-message--bot {
+    background: #E8F0DC;
+    border: 1px solid rgba(79, 129, 94, 0.2);
+    border-radius: 16px 16px 16px 4px;
+    padding: 12px 16px;
+  }
+
+  .milo-chat-message--bot p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #2d4a35;
+    margin: 0;
+  }
+
+  @keyframes miloMsgIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Input Area ─────────────────────── */
+  .milo-panel-input-area {
+    padding: 12px 16px 16px;
+    border-top: 1px solid #e8e8e8;
+    background: #fff;
+  }
+
+  .milo-panel-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid #d0d0d0;
+    border-radius: 999px;
+    padding: 6px 6px 6px 16px;
+    transition: border-color 0.2s ease;
+  }
+
+  .milo-panel-input-row:focus-within {
+    border-color: #4F815E;
+    box-shadow: 0 0 0 3px rgba(79, 129, 94, 0.1);
+  }
+
+  .milo-panel-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.88rem;
+    font-family: inherit;
+    color: #333;
+  }
+
+  .milo-panel-input::placeholder {
+    color: #aaa;
+  }
+
+  .milo-panel-send {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #4F815E 0%, #3d6a4a 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .milo-panel-send:hover {
+    transform: scale(1.08);
+    box-shadow: 0 2px 8px rgba(79, 129, 94, 0.4);
+  }
+
+  /* ── Suggestion Chips ───────────────── */
+  .milo-panel-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .milo-suggestion-chip {
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid #4F815E;
+    background: rgba(79, 129, 94, 0.06);
+    color: #4F815E;
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .milo-suggestion-chip:hover {
+    background: #4F815E;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(79, 129, 94, 0.3);
+  }
+
+  /* ═══════════════════════════════════════
+     Open State
+     ═══════════════════════════════════════ */
+  .milo-chat-wrapper.is-open .milo-chat-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .milo-chat-wrapper.is-open .milo-bubble-avatar {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  .milo-chat-wrapper.is-open .milo-bubble-close {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  .milo-chat-wrapper.is-open .milo-bubble-pulse {
+    display: none;
+  }
+
+  .milo-chat-wrapper.is-open .milo-chat-bubble {
+    background: linear-gradient(135deg, #3d6a4a 0%, #2d5238 100%);
+  }
+
+  /* ═══════════════════════════════════════
+     Mobile Responsive
+     ═══════════════════════════════════════ */
+  @media (max-width: 480px) {
+    .milo-chat-wrapper {
+      bottom: 16px;
+      right: 16px;
+    }
+
+    .milo-chat-panel {
+      width: calc(100vw - 32px);
+      right: -8px;
+      max-height: calc(100vh - 140px);
+    }
+
+    .milo-chat-bubble {
+      width: 56px;
+      height: 56px;
+    }
+
+    .milo-bubble-avatar img {
+      width: 34px;
+      height: 34px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('milo-chat-wrapper');
+    const toggle = document.getElementById('milo-chat-toggle');
+
+    if (!wrapper || !toggle) return;
+
+    toggle.addEventListener('click', function() {
+      wrapper.classList.toggle('is-open');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (wrapper.classList.contains('is-open') && !wrapper.contains(e.target)) {
+        wrapper.classList.remove('is-open');
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && wrapper.classList.contains('is-open')) {
+        wrapper.classList.remove('is-open');
+        toggle.focus();
+      }
+    });
+
+    // Suggestion chips fill input
+    const chips = wrapper.querySelectorAll('.milo-suggestion-chip');
+    const input = document.getElementById('milo-panel-input');
+    chips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        if (input) {
+          input.value = chip.textContent;
+          input.focus();
+        }
+      });
+    });
+  });
+</script>
