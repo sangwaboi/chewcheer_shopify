@@ -12,7 +12,8 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "heading": "Because good health starts in the gut.",
+        "heading_line_1": "Because good health",
+        "heading_line_2": "starts in the gut.",
         "subheading": "Prebiotic chew sticks that keep your dog's gut healthy and digestion smooth."
       }
     },
