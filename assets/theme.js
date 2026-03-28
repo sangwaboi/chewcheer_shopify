@@ -244,11 +244,19 @@
   /* ─────────────────────────────────────────────
      7. REVIEW CAROUSEL (dequeue / circular rotation)
      ────────────────────────────────────────────── */
+  var _carouselAutoplayId = null;
+
   function initReviewCarousel() {
     var track = document.getElementById('review-carousel-track');
     var prevBtn = document.getElementById('review-carousel-prev');
     var nextBtn = document.getElementById('review-carousel-next');
     if (!track || !prevBtn || !nextBtn) return;
+
+    // Clear any previous autoplay
+    if (_carouselAutoplayId) {
+      clearInterval(_carouselAutoplayId);
+      _carouselAutoplayId = null;
+    }
 
     // Image URLs passed from Liquid via window.__reviewImages
     var imgs = (window.__reviewImages || []).slice();
@@ -277,28 +285,28 @@
       render();
     }
 
-    prevBtn.addEventListener('click', function () {
-      moveLeft();
-      resetAutoplay();
-    });
-
-    nextBtn.addEventListener('click', function () {
-      moveRight();
-      resetAutoplay();
-    });
-
-    // Autoplay every 3 seconds
-    var autoplayId = null;
-
     function startAutoplay() {
-      autoplayId = setInterval(function () {
+      _carouselAutoplayId = setInterval(function () {
         moveRight();
       }, 3000);
     }
 
     function resetAutoplay() {
-      clearInterval(autoplayId);
+      clearInterval(_carouselAutoplayId);
       startAutoplay();
+    }
+
+    // Only bind click handlers once (use data attribute guard)
+    if (!track.dataset.carouselInit) {
+      track.dataset.carouselInit = 'true';
+      prevBtn.addEventListener('click', function () {
+        moveLeft();
+        resetAutoplay();
+      });
+      nextBtn.addEventListener('click', function () {
+        moveRight();
+        resetAutoplay();
+      });
     }
 
     // Initial render & start
@@ -309,7 +317,7 @@
   /* ─────────────────────────────────────────────
      INIT
      ────────────────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded', function () {
+  function initAll() {
     initCountdown();
     initFaq();
     initProductTabs();
@@ -317,5 +325,15 @@
     initQuantity();
     initBuyNow();
     initReviewCarousel();
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', initAll);
+
+  // If the DOM already loaded (e.g. script injected late), run now
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initAll();
+  }
+
+  // Re-init when Shopify theme editor / dev server hot-reloads a section
+  document.addEventListener('shopify:section:load', initAll);
 })();
