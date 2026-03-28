@@ -40,19 +40,11 @@
             "tab_content": "<p>Feeding guide...</p>"
           }
         },
-        "tab-details": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Details",
-            "tab_content": "<p>Additional details...</p>"
-          }
-        }
       },
       "block_order": [
         "tab-desc",
         "tab-ingredients",
-        "tab-feeding",
-        "tab-details"
+        "tab-feeding"
       ],
       "settings": {
         "product": "prebiotic-inulin-sticks",
