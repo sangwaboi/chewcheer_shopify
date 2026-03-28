@@ -2,6 +2,7 @@
   "current": {
     "color_primary": "#4F815E",
     "color_accent": "#66261E",
-    "color_coral": "#C97064"
+    "color_coral": "#C97064",
+    "countdown_target_date": "2026-04-15T00:00:00+05:30"
   }
 }

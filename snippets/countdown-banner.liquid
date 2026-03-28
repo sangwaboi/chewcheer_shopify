@@ -1,9 +1,13 @@
 <div
   id="countdown-banner"
   class="w-full bg-[#E8F0DC] text-center py-2 font-[Spinnaker] text-sm text-brand-dark"
-  data-target-date="{{ settings.countdown_target_date | default: '2026-04-01T00:00:00+05:30' }}"
+  data-target-date="{{ settings.countdown_target_date | default: '2026-04-15T00:00:00+05:30' }}"
 >
-  countdown timer ends in <span id="countdown-timer" class="font-bold"></span>
-  &nbsp;
-  <a href="#shop" class="font-bold  transition-all duration-200 hover:underline cursor-pointer">Pre-order now!</a>
+  <a
+    href="#shop"
+    class="font-bold underline underline-offset-2 decoration-[#3d2b1f] hover:text-[#22422b] transition-colors cursor-pointer"
+  >
+    Pre-order sale ends in
+  </a>
+  <span id="countdown-timer" class="font-bold"></span>
 </div>

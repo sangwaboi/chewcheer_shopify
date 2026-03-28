@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "name": "theme_info",
+    "theme_name": "ChewCheer",
+    "theme_version": "1.0.0",
+    "theme_author": "ChewCheer",
+    "theme_documentation_url": "https://chewcheer.in",
+    "theme_support_url": "mailto:sangwavishvendr@gmail.com"
+  },
+  {
+    "name": "Countdown",
+    "settings": [
+      {
+        "type": "text",
+        "id": "countdown_target_date",
+        "label": "Countdown end (ISO 8601, India time)",
+        "default": "2026-04-15T00:00:00+05:30",
+        "info": "Pre-order sale end date. Format: 2026-04-15T00:00:00+05:30"
+      }
+    ]
+  }
+]
