@@ -40,7 +40,7 @@
     <div class="relative z-10 flex h-full w-full min-w-0 items-center justify-center max-md:px-3 md:px-0">
       <div class="relative flex w-full max-w-[min(100%,32rem)] flex-col items-center text-center md:w-auto md:max-w-none">
         <h1 class="mt-3 px-1 text-center font-[Talina] font-semi-bold text-shadow-lg text-white max-md:text-4xl max-md:whitespace-normal md:px-0 md:text-6xl md:whitespace-normal lg:text-7xl">
-          <span class="block">{{ section.settings.heading_line_1 | default: 'Because good health' }}</span>
+          <span class="block mb-5">{{ section.settings.heading_line_1 | default: 'Because good health' }}</span>
           <span class="block">{{ section.settings.heading_line_2 | default: 'starts in the gut.' }}</span>
         </h1>
 
@@ -58,9 +58,9 @@
 
         <img
           src="{{ 'hero-product.svg' | asset_url }}"
-          class="relative z-10 w-[min(100%,320px)] drop-shadow-2xl md:w-[420px] lg:w-[500px]"
+          class="relative mt-[-60px] z-10 w-[min(100%,320px)] drop-shadow-2xl md:w-[420px] lg:w-[500px]"
           alt="ChewCheer product"
-        >
+        > 
 
         {%- comment -%} Mobile CTA {%- endcomment -%}
         <div class="mt-6 flex w-full max-w-sm flex-col items-center gap-3 md:hidden">
@@ -79,6 +79,7 @@
         </div>
 
         {%- comment -%} Desktop: quote + curved arrow {%- endcomment -%}
+
         <div class="absolute bottom-[130px] left-[-120px] hidden w-[220px] text-center font-[Cookie] text-3xl text-[#4F815E] md:block">
           <div class="relative">
             <div class="flex flex-col">
