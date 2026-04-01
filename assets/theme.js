@@ -166,6 +166,12 @@
     var display = document.getElementById('qty-display');
     if (!minus || !plus || !display) return;
 
+    if (display.dataset.qtyInit === 'true') {
+      display.textContent = qty;
+      return;
+    }
+    display.dataset.qtyInit = 'true';
+
     minus.addEventListener('click', function () {
       qty = Math.max(1, qty - 1);
       display.textContent = qty;
@@ -183,6 +189,9 @@
     var btn = document.getElementById('buy-now-btn');
     var errorEl = document.getElementById('product-error');
     if (!btn) return;
+
+    if (btn.dataset.buyNowInit === 'true') return;
+    btn.dataset.buyNowInit = 'true';
 
     btn.addEventListener('click', function () {
       btn.disabled = true;
@@ -327,10 +336,9 @@
     initReviewCarousel();
   }
 
-  document.addEventListener('DOMContentLoaded', initAll);
-
-  // If the DOM already loaded (e.g. script injected late), run now
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll, { once: true });
+  } else {
     initAll();
   }
 

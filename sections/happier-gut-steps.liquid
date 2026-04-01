@@ -1,61 +1,126 @@
-<div class="flex justify-center items-center flex-col w-full min-w-0">
-  <div class="border-5 bg-[#E5C68761] border-[#66261E] w-7xl h-fit rounded-[44px] px-10 py-10">
-    <div class="font-[Talina] text-[40px] mb-10 text-[#66261E] leading-[100%] tracking-0% text-center">
-      A Happier Gut In 3 Simple Steps
+<div class="flex w-full min-w-0 flex-col items-center justify-center">
+  {%- comment -%} Mobile-only layout matching Figma stack {%- endcomment -%}
+  <div class="w-full px-4 md:hidden">
+    <div class="mx-auto max-w-[390px] rounded-[44px] border-5 border-[#66261E] bg-[#E5C68761] px-6 py-10">
+      <div class="mb-8 text-center font-[Talina] text-[26px] leading-snug text-[#66261E]">
+        A Happier Gut In 3 Simple Steps
+      </div>
+
+      <div class="flex flex-col gap-8">
+        <div class="relative rounded-[20px] border-3 border-[#D9C4A7] bg-[#F6E9C8]/80 px-4 py-4">
+          <div class="flex flex-col items-center text-center">
+            <div class="relative mb-4 flex h-[150px] items-end justify-center">
+              <img src="{{ 'good-bacteria.png' | asset_url }}" alt="" class="relative z-10 max-h-full object-contain">
+              <img src="{{ 'vector-0.png' | asset_url }}" alt="" class="absolute z-0 -translate-y-2 translate-x-1 w-[150px] opacity-70">
+            </div>
+            <span class="mt-1 font-[Talina] text-[24px] leading-tight text-[#66261E]">Feed good bacteria</span>
+            <span class="mt-2 px-2 font-[Spinnaker] text-[18px] leading-snug text-[#66261E]">
+              Feeds the good bacteria your dog actually needs
+            </span>
+          </div>
+        </div>
+
+        <div class="relative rounded-[20px] border-3 border-[#D9C4A7] bg-[#F6E9C8]/80 px-4 py-4">
+          <div class="flex flex-col items-center text-center">
+            <div class="relative mb-4 flex h-[150px] items-end justify-center">
+              <img src="{{ 'good-gut.png' | asset_url }}" alt="" class="relative z-10 max-h-full object-contain">
+              
+            </div>
+            <img src="{{ 'paw-brown.png' | asset_url }}" alt="" class="absolute z-0 -translate-y-13 rotate-18 w-[220px]">
+            <span class="mt-1 font-[Talina] text-[24px] leading-tight text-[#66261E]">Balance Digestion</span>
+            <span class="mt-2 px-2 font-[Spinnaker] text-[18px] leading-snug text-[#C97064]">
+              Helps digestion do its job. No drama.
+            </span>
+          </div>
+        </div>
+
+        <div class="relative rounded-[20px] border-3 border-[#D9C4A7] bg-[#F6E9C8]/80 px-4 py-4">
+          <div class="flex flex-col items-center text-center">
+            <div class="relative mb-4 flex h-[150px] items-end justify-center">
+              <img src="{{ 'happy-healthy-dog.png' | asset_url }}" alt="" class="relative z-10 max-h-full object-contain">
+              <img src="{{ 'vector-1.png' | asset_url }}" alt="" class="absolute z-0 -translate-y-4 translate-x-2 w-[150px] opacity-70">
+            </div>
+            <span class="mt-1 font-[Talina] text-[24px] leading-tight text-[#66261E]">Happier, Healthier Dogs</span>
+            <span class="mt-2 px-2 font-[Spinnaker] text-[18px] leading-snug text-[#66261E]">
+              Less Gas, Better poop. More Zoomies
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-start gap-4">
-
-      {%- comment -%} Step 1 {%- endcomment -%}
-      <div class="flex flex-col items-center text-center">
-        <div class="h-[250px] flex items-end justify-center mb-4 relative">
-          <img src="{{ 'good-bacteria.png' | asset_url }}" alt="" class="max-h-full object-contain">
-          <div class="w-[200px] h-[180px] absolute">
-            <img src="{{ 'vector-0.png' | asset_url }}" alt="" class="absolute -z-10 -translate-y-12 translate-x-2">
-          </div>
-        </div>
-        <span class="font-[Talina] text-[24px] text-[#66261E] leading-tight mt-2">Feed Good Bacteria</span>
-        <span class="font-[Spinnaker] text-[18px] text-[#C97064] mt-1 px-4">Feeds the good bacteria your dog actually needs.</span>
-        <span class="font-[Talina] text-[28px] text-[#66261E] mt-6 w-10 h-10 flex items-center justify-center rounded-full border-3 border-[#66261E]">1</span>
-      </div>
-
-      <div class="flex items-center h-[250px]">
-        <img src="{{ 'arrow-right-step.png' | asset_url }}" alt="">
-      </div>
-
-      {%- comment -%} Step 2 {%- endcomment -%}
-      <div class="flex flex-col items-center text-center">
-        <div class="h-[250px] flex items-end justify-center mb-4 relative">
-          <img src="{{ 'good-gut.png' | asset_url }}" alt="" class="max-h-full object-contain">
-          <div class="w-[400px] h-[400px] absolute">
-            <img src="{{ 'paw-brown.png' | asset_url }}" alt="" class="absolute -z-10 translate-y-6 rotate-18">
-          </div>
-        </div>
-        <span class="font-[Talina] text-[24px] text-[#66261E] leading-tight mt-2">Balance Digestion</span>
-        <span class="font-[Spinnaker] text-[18px] text-[#C97064] mt-1 px-4">Helps digestion do its job. No drama.</span>
-        <span class="font-[Talina] text-[28px] text-[#66261E] mt-6 w-10 h-10 flex items-center justify-center rounded-full border-3 border-[#66261E]">2</span>
-      </div>
-
-      <div class="flex items-center h-[250px]">
-        <img src="{{ 'arrow-right-step.png' | asset_url }}" alt="">
-      </div>
-
-      {%- comment -%} Step 3 {%- endcomment -%}
-      <div class="flex flex-col items-center text-center">
-        <div class="h-[250px] flex items-end justify-center mb-4 relative">
-          <img src="{{ 'happy-healthy-dog.png' | asset_url }}" alt="" class="max-h-full object-contain">
-          <div class="w-[200px] h-[180px] absolute">
-            <img src="{{ 'vector-1.png' | asset_url }}" alt="" class="absolute -z-10 -translate-y-20 translate-x-4">
-          </div>
-        </div>
-        <span class="font-[Talina] text-[24px] text-[#66261E] leading-tight mt-2 text-nowrap">Happier, Healthier Dogs.</span>
-        <span class="font-[Spinnaker] text-[18px] text-[#C97064] mt-1 px-4">Less gas. Better poop. More zoomies.</span>
-        <span class="font-[Talina] text-[28px] text-[#66261E] mt-6 w-10 h-10 flex items-center justify-center rounded-full border-3 border-[#66261E]">3</span>
-      </div>
-
+    <div class="mt-4 mb-30 text-center font-[Cookie] text-2xl">
+      It's not magic. It's just good gut health.
     </div>
   </div>
-  <div class="font-[Cookie] text-2xl mt-4 mb-30">It's not magic. It's just good gut health.</div>
+
+  {%- comment -%} Desktop layout preserved exactly {%- endcomment -%}
+  <div class="hidden md:block">
+    <div class="border-5 h-fit w-7xl rounded-[44px] border-[#66261E] bg-[#E5C68761] px-10 py-10">
+      <div class="mb-10 text-center font-[Talina] text-[40px] leading-[100%] tracking-0% text-[#66261E]">
+        A Happier Gut In 3 Simple Steps
+      </div>
+
+      <div class="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-start gap-4">
+        {%- comment -%} Step 1 {%- endcomment -%}
+        <div class="flex flex-col items-center text-center">
+          <div class="relative mb-4 flex h-[250px] items-end justify-center">
+            <img src="{{ 'good-bacteria.png' | asset_url }}" alt="" class="max-h-full object-contain">
+            <div class="absolute h-[180px] w-[200px]">
+              <img src="{{ 'vector-0.png' | asset_url }}" alt="" class="absolute -translate-y-12 translate-x-2 -z-10">
+            </div>
+          </div>
+          <span class="mt-2 font-[Talina] text-[24px] leading-tight text-[#66261E]">Feed Good Bacteria</span>
+          <span class="mt-1 px-4 font-[Spinnaker] text-[18px] text-[#C97064]"
+            >Feeds the good bacteria your dog actually needs.</span
+          >
+          <span class="mt-6 flex h-10 w-10 items-center justify-center rounded-full border-3 border-[#66261E] font-[Talina] text-[28px] text-[#66261E]"
+            >1</span
+          >
+        </div>
+
+        <div class="flex h-[250px] items-center">
+          <img src="{{ 'arrow-right-step.png' | asset_url }}" alt="">
+        </div>
+
+        {%- comment -%} Step 2 {%- endcomment -%}
+        <div class="flex flex-col items-center text-center">
+          <div class="relative mb-4 flex h-[250px] items-end justify-center">
+            <img src="{{ 'good-gut.png' | asset_url }}" alt="" class="max-h-full object-contain">
+            <div class="absolute h-[400px] w-[400px]">
+              <img src="{{ 'paw-brown.png' | asset_url }}" alt="" class="absolute translate-y-6 rotate-18 -z-10">
+            </div>
+          </div>
+          <span class="mt-2 font-[Talina] text-[24px] leading-tight text-[#66261E]">Balance Digestion</span>
+          <span class="mt-1 px-4 font-[Spinnaker] text-[18px] text-[#C97064]">Helps digestion do its job. No drama.</span>
+          <span class="mt-6 flex h-10 w-10 items-center justify-center rounded-full border-3 border-[#66261E] font-[Talina] text-[28px] text-[#66261E]"
+            >2</span>
+        </div>
+
+        <div class="flex h-[250px] items-center">
+          <img src="{{ 'arrow-right-step.png' | asset_url }}" alt="">
+        </div>
+
+        {%- comment -%} Step 3 {%- endcomment -%}
+        <div class="flex flex-col items-center text-center">
+          <div class="relative mb-4 flex h-[250px] items-end justify-center">
+            <img src="{{ 'happy-healthy-dog.png' | asset_url }}" alt="" class="max-h-full object-contain">
+            <div class="absolute h-[180px] w-[200px]">
+              <img src="{{ 'vector-1.png' | asset_url }}" alt="" class="absolute -translate-y-20 translate-x-4 -z-10">
+            </div>
+          </div>
+          <span class="mt-2 text-nowrap font-[Talina] text-[24px] leading-tight text-[#66261E]"
+            >Happier, Healthier Dogs.</span
+          >
+          <span class="mt-1 px-4 font-[Spinnaker] text-[18px] text-[#C97064]">Less gas. Better poop. More zoomies.</span>
+          <span class="mt-6 flex h-10 w-10 items-center justify-center rounded-full border-3 border-[#66261E] font-[Talina] text-[28px] text-[#66261E]"
+            >3</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 mb-30 font-[Cookie] text-center text-2xl">It's not magic. It's just good gut health.</div>
+  </div>
 </div>
 
 {% schema %}

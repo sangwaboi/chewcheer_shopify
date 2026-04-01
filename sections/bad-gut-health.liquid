@@ -1,40 +1,85 @@
-<div class="flex justify-center items-center flex-col w-full mt-10 min-w-0">
-  <div class="font-[Talina] text-[40px] text-[#C97064] leading-[100%] tracking-0%">
-    Not all "good boys" have good guts.
-  </div>
+<div class="mt-10 flex w-full min-w-0 flex-col items-center justify-center">
+  {%- comment -%} Mobile layout matching Figma {%- endcomment -%}
+  <section class="w-full md:hidden">
+    <div class="mx-auto flex max-w-[390px] flex-col items-center px-6 pt-12 pb-16 text-center">
+      <h2 class="max-w-[320px] font-[Talina] text-[26px] leading-snug text-[#C97064]">
+        Not all "good boys" have good guts.
+      </h2>
 
-  <div class="relative w-full bg-transparent h-screen mt-[-100px] mb-30">
-    <div class="flex justify-end items-center h-full flex-col">
+      <div class="relative mt-8 w-full">
+        <div class="relative mx-auto w-[250px]">
+          <img src="{{ 'paw-watermark.svg' | asset_url }}" alt="" class="absolute left-1/2  -top-[60px] z-0 w-[460px] -translate-x-1/2">
+          
+          <img src="{{ 'sick-dog.png' | asset_url }}" alt="Sick dog" class="relative z-10 w-full">
+        </div>
 
-      {%- comment -%} Gas cloud - upper left {%- endcomment -%}
-      <img src="{{ 'gas-icon.svg' | asset_url }}" alt="" class="absolute top-[20%] left-[15%]">
-      <img src="{{ 'green-v1.png' | asset_url }}" alt="" class="absolute top-[28%] left-[18%] -z-10">
+        <img src="{{ 'arrow-3.png' | asset_url }}" alt="" class="absolute left-[44px] top-[154px] w-[90px] rotate-[280deg]">
+        <img src="{{ 'arrow-1.png' | asset_url }}" alt="" class="absolute left-1/2 top-[180px] w-[90px] -translate-x-1/2 rotate-180">
+        <img src="{{ 'arrow-2.png' | asset_url }}" alt="" class="absolute right-[44px] top-[154px] w-[90px] rotate-[55deg]">
 
-      {%- comment -%} Energy battery - top center {%- endcomment -%}
-      <img src="{{ 'energy-drop.svg' | asset_url }}" alt="" class="absolute top-[10%] left-1/2 -translate-x-1/2">
-      <img src="{{ 'green-v2.png' | asset_url }}" alt="" class="absolute -z-10 top-[18%] left-1/2 -translate-x-1/2">
+        <div class="absolute left-[20px] top-[228px] w-[104px]">
+          <img src="{{ 'green-v1.png' | asset_url }}" alt="" class="absolute inset-0 z-0 w-full opacity-45">
+          <div class="relative z-10 flex flex-col items-center px-2 pt-3 pb-2">
+            <img src="{{ 'energy-drop.svg' | asset_url }}" alt="" class="w-[300px]">
+            <p class="mt-2 font-[Spinnaker] text-[16px] leading-tight text-[#264B34]">Energy dropping?</p>
+          </div>
+        </div>
 
-      {%- comment -%} Poop - right side {%- endcomment -%}
-      <img src="{{ 'poop-icon.png' | asset_url }}" alt="" class="absolute top-[38%] right-[17%]">
-      <img src="{{ 'green-v3.png' | asset_url }}" alt="" class="absolute top-[46%] -z-10 right-[20%]">
+        <div class="absolute left-1/2 top-[280px] w-[110px] -translate-x-1/2">
+          <img src="{{ 'green-v2.png' | asset_url }}" alt="" class="absolute inset-0 z-0 w-full opacity-45">
+          <div class="relative z-10 flex flex-col items-center px-2 pt-3 pb-2">
+            <img src="{{ 'gas-icon.svg' | asset_url }}" alt="" class="w-[300px]">
+            <p class="mt-2 font-[Spinnaker] text-[16px] leading-tight text-[#264B34]">Post-meal zoomies? Or gas?</p>
+          </div>
+        </div>
 
-      {%- comment -%} Arrows pointing to dog {%- endcomment -%}
-      <img src="{{ 'arrow-3.png' | asset_url }}" alt="" class="absolute top-[48%] left-[30%] rotate-6">
-      <img src="{{ 'arrow-1.png' | asset_url }}" alt="" class="absolute top-[35%] left-1/2 -translate-x-1/2">
-      <img src="{{ 'arrow-2.png' | asset_url }}" alt="" class="absolute top-[57%] right-[33%]">
+        <div class="absolute right-[20px] top-[228px] w-[104px]">
+          <img src="{{ 'green-v3.png' | asset_url }}" alt="" class="absolute inset-0 z-0 w-full opacity-45">
+          <div class="relative z-10 flex flex-col items-center px-2 pt-3 pb-2">
+            <img src="{{ 'poop-icon.png' | asset_url }}" alt="" class="w-[300px]">
+            <p class="mt-2 font-[Spinnaker] text-[16px] leading-tight text-[#264B34]">Poop not looking right?</p>
+          </div>
+        </div>
 
-      <div class="w-[450px] relative">
-        <img src="{{ 'sick-dog.png' | asset_url }}" alt="">
-        <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute -z-10 -translate-y-102 rotate-18">
+        <div class="h-[408px]"></div>
       </div>
-      <span class="font-[Talina] text-[24px] text-wrap text-center text-[#4F815E] leading-[100%] tracking-0%">
-        Most problems don't start where you see them.
-      </span>
-      <span class="font-[Talina] text-[24px] pt-2 text-wrap text-center text-[#4F815E] leading-[100%] tracking-0%">
-        They start in the gut. That's where prebiotics help.
-      </span>
     </div>
-  </div>
+  </section>
+
+  {%- comment -%} Existing desktop layout preserved {%- endcomment -%}
+  <section class="hidden w-full md:block">
+    <div class="font-[Talina] text-center text-[40px] leading-[100%] tracking-0% text-[#C97064]">
+      Not all "good boys" have good guts.
+    </div>
+
+    <div class="relative mt-[-100px] mb-30 h-screen w-full bg-transparent">
+      <div class="flex h-full flex-col items-center justify-end">
+        <img src="{{ 'gas-icon.svg' | asset_url }}" alt="" class="absolute top-[20%] left-[15%]">
+        <img src="{{ 'green-v1.png' | asset_url }}" alt="" class="absolute top-[28%] left-[18%] -z-10">
+
+        <img src="{{ 'energy-drop.svg' | asset_url }}" alt="" class="absolute top-[10%] left-1/2 -translate-x-1/2">
+        <img src="{{ 'green-v2.png' | asset_url }}" alt="" class="absolute top-[18%] left-1/2 -translate-x-1/2 -z-10">
+
+        <img src="{{ 'poop-icon.png' | asset_url }}" alt="" class="absolute top-[38%] right-[17%]">
+        <img src="{{ 'green-v3.png' | asset_url }}" alt="" class="absolute top-[46%] right-[20%] -z-10">
+
+        <img src="{{ 'arrow-3.png' | asset_url }}" alt="" class="absolute top-[48%] left-[30%] rotate-6">
+        <img src="{{ 'arrow-1.png' | asset_url }}" alt="" class="absolute top-[35%] left-1/2 -translate-x-1/2">
+        <img src="{{ 'arrow-2.png' | asset_url }}" alt="" class="absolute top-[57%] right-[33%]">
+
+        <div class="relative w-[450px]">
+          <img src="{{ 'sick-dog.png' | asset_url }}" alt="">
+          <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute -translate-y-102 rotate-18 -z-10">
+        </div>
+        <span class="pt-2 text-center font-[Talina] text-[24px] leading-[100%] tracking-0% text-[#4F815E]">
+          Most problems don't start where you see them.
+        </span>
+        <span class="pt-2 text-center font-[Talina] text-[24px] leading-[100%] tracking-0% text-[#4F815E]">
+          They start in the gut. That's where prebiotics help.
+        </span>
+      </div>
+    </div>
+  </section>
 </div>
 
 {% schema %}
