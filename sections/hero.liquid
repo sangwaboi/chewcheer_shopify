@@ -52,16 +52,21 @@
         </p>
 
         {%- comment -%} Mobile: quote + CTA {%- endcomment -%}
-        <div class="mt-6 w-full max-w-sm text-center font-[Cookie] text-3xl text-[#4F815E] md:hidden">
+        <div class="text-wrap mt-6 w-[30%] max-w-sm text-center font-[Cookie] text-[15px] text-[#4F815E] -translate-x-35 translate-y-47 md:hidden">
           because your dog's tummy deserves better.
         </div>
 
+            <img
+          src="{{ 'mobile-arrow.svg' | asset_url }}"
+          class="absolute -translate-x-28 translate-y-93 -rotate-10" 
+          > 
+        
         <img
           src="{{ 'hero-product.svg' | asset_url }}"
-          class="relative mt-[-60px] z-10 w-[min(100%,320px)] drop-shadow-2xl md:w-[420px] lg:w-[500px]"
+          class="relative mt-[-40px] z-10 w-[min(100%,300px)] drop-shadow-2xl md:w-[420px] lg:w-[500px]"
           alt="ChewCheer product"
         > 
-
+        
         {%- comment -%} Mobile CTA {%- endcomment -%}
         <div class="mt-6 flex w-full max-w-sm flex-col items-center gap-3 md:hidden">
           <a

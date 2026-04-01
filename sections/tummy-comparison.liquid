@@ -1,73 +1,135 @@
-<div class="w-screen relative left-1/2 -translate-x-1/2 bg-[#F5F5F5] py-20 overflow-hidden">
-  {%- comment -%} Sad dog — left {%- endcomment -%}
-  <div class="absolute left-30 top-1/2 -translate-y-1/2 w-[240px] h-[240px] flex items-center justify-center">
-    <img src="{{ 'sad-dog.svg' | asset_url }}" alt="">
-  </div>
-  <div class="absolute -z-10 h-[370px] w-[370px] -translate-y-[-40px] -translate-x-[-60px] rotate-10">
-    <img src="{{ 'paw-green.png' | asset_url }}" alt="">
-  </div>
-
-  {%- comment -%} Happy dog — right {%- endcomment -%}
-  <div class="absolute right-30 top-1/2 -translate-y-1/2 w-[240px] h-[240px] flex items-center justify-center">
-    <img src="{{ 'happy-dog.png' | asset_url }}" alt="">
-  </div>
-  <div class="absolute h-[370px] w-[370px] -z-10 right-18 top-1/2 -translate-y-[66%]">
-    <img src="{{ 'paw-green.png' | asset_url }}" alt="">
-  </div>
-
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="font-[Talina] text-[40px] text-[#C97064] text-center leading-tight tracking-wider">
+<div class="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-[#F5F5F5] py-20">
+  {%- comment -%} Mobile layout matching Figma {%- endcomment -%}
+  <div class="mx-auto max-w-[390px] px-6 md:hidden">
+    <h2 class="text-center font-[Talina] text-[26px] leading-snug text-[#C97064]">
       From tummy troubles to tail wags
     </h2>
 
-    <div class="grid grid-cols-[1fr_auto_1fr] gap-6 items-center mt-14">
-      {%- comment -%} Before {%- endcomment -%}
-      <div class="flex items-center justify-center">
-        <div>
-          <p class="font-[Spinnaker] text-xl text-gray-500 font-bold mb-4 text-nowrap">
-            You've probably noticed this...
-          </p>
-          <ul class="space-y-2 text-center font-[Spinnaker] text-sm text-gray-500">
-            <div>Tummy acting weird</div>
-            <div>Poop all over the place</div>
-            <div>Gassy after meals</div>
-            <div>Low energy days</div>
-          </ul>
+    <div class="mt-8 flex flex-col items-center text-center">
+      <div class="relative w-[190px]">
+        <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute left-1/2 top-[4px] w-[130px] -translate-x-1/2 opacity-18">
+        <img src="{{ 'sick-dog.png' | asset_url }}" alt="Sick dog" class="relative z-10 w-full">
+      </div>
+
+      <p class="mt-4 font-[Spinnaker] text-[18px] font-bold text-gray-400">
+        You've probably noticed this
+      </p>
+      <div class="mt-4 space-y-2 font-[Spinnaker] text-[16px] leading-tight text-black">
+        <div>Tummy acting weird</div>
+        <div>Poop all over the place</div>
+        <div>Gassy after meals</div>
+        <div>Low energy days</div>
+      </div>
+
+      <div class="relative mt-10 flex flex-col items-center">
+        <span class="absolute left-[-102px] top-[80px] w-[82px] -rotate-[18deg] text-left font-[Cookie] text-[18px] leading-tight text-[#4F815E]">
+          This is where it changes
+        </span>
+        <div class="relative flex items-center justify-center">
+          <img src="{{ 'stick2.png' | asset_url }}" alt="" class="w-[132px] rotate-90">
+          <img src="{{ 'round-arrow.png' | asset_url }}" alt="" class="absolute left-1/2 top-[80px] w-[150px] -translate-x-1/2 rotate-90">
         </div>
       </div>
 
-      {%- comment -%} Center stick {%- endcomment -%}
-      <div class="flex flex-col items-center">
-        <div class="w-[80px] h-[200px] flex items-center justify-center">
-          <span class="text-gray-400 text-xs text-center font-[Spinnaker] relative">
-            <img src="{{ 'stick2.png' | asset_url }}" alt="">
-            <img src="{{ 'round-arrow.png' | asset_url }}" alt="" class="absolute top-13 left-0">
-          </span>
-        </div>
-        <p class="font-[Cookie] text-[20px] text-[#4F815E] mt-2 text-nowrap">This is where it changes</p>
+      <p class="mt-10 font-[Talina] text-[24px] leading-tight text-[#4F815E]">
+        This is how it should be
+      </p>
+
+      <div class="relative mt-4 w-[150px]">
+        <img src="{{ 'paw-green.png' | asset_url }}" alt="" class="absolute left-1/2 top-[8px] w-[106px] -translate-x-1/2 opacity-18">
+        <img src="{{ 'happy-dog.png' | asset_url }}" alt="Happy dog" class="relative z-10 w-full">
       </div>
 
-      {%- comment -%} After {%- endcomment -%}
-      <div class="flex items-center justify-center">
-        <div>
-          <p class="font-[Spinnaker] text-xl text-nowrap text-[#4F815E] font-bold mb-4">This is how it should be.</p>
-          <ul class="space-y-4 font-[Spinnaker] text-center text-sm text-[#4F815E] font-semibold">
-            <div>Smooth, easy digestion</div>
-            <div>Consistent, healthy poop</div>
-            <div>More energy, more play</div>
-            <div>Tail that won't stop wagging</div>
-          </ul>
-        </div>
+      <div class="mt-4 space-y-2 font-[Spinnaker] text-[16px] leading-tight text-[#4F815E]">
+        <div>Smooth, easy digestion</div>
+        <div>Consistent, healthy poop</div>
+        <div>More energy, more play</div>
+        <div>Tail that won't stop wagging</div>
+      </div>
+
+      <div class="mt-10 flex justify-center">
+        <a href="#shop">
+          <button class="flex cursor-pointer flex-row items-center gap-x-2 rounded-[10px] bg-[#4F815E] px-6 py-3 font-[Talina] text-[26px] font-light leading-[100%] text-white tracking-0%">
+            Pre-order now!
+            {% render 'icon-arrow-right' %}
+          </button>
+        </a>
       </div>
     </div>
+  </div>
 
-    <div class="flex justify-center mt-15">
-      <a href="#shop">
-        <button class="flex flex-row items-center gap-x-2 font-[Talina] bg-[#4F815E] text-[26px] text-white px-6 py-3 rounded-[10px] leading-[100%] tracking-0% font-light cursor-pointer">
-          Pre-order now!
-          {% render 'icon-arrow-right' %}
-        </button>
-      </a>
+  {%- comment -%} Existing desktop layout preserved {%- endcomment -%}
+  <div class="hidden md:block">
+    {%- comment -%} Sad dog — left {%- endcomment -%}
+    <div class="absolute left-30 top-1/2 flex h-[240px] w-[240px] -translate-y-1/2 items-center justify-center">
+      <img src="{{ 'sad-dog.svg' | asset_url }}" alt="">
+    </div>
+    <div class="absolute h-[370px] w-[370px] -translate-y-[-40px] -translate-x-[-60px] rotate-10 -z-10">
+      <img src="{{ 'paw-green.png' | asset_url }}" alt="">
+    </div>
+
+    {%- comment -%} Happy dog — right {%- endcomment -%}
+    <div class="absolute right-30 top-1/2 flex h-[240px] w-[240px] -translate-y-1/2 items-center justify-center">
+      <img src="{{ 'happy-dog.png' | asset_url }}" alt="">
+    </div>
+    <div class="absolute right-18 top-1/2 h-[370px] w-[370px] -translate-y-[66%] -z-10">
+      <img src="{{ 'paw-green.png' | asset_url }}" alt="">
+    </div>
+
+    <div class="mx-auto max-w-3xl px-6">
+      <h2 class="text-center font-[Talina] text-[40px] leading-tight tracking-wider text-[#C97064]">
+        From tummy troubles to tail wags
+      </h2>
+
+      <div class="mt-14 grid grid-cols-[1fr_auto_1fr] items-center gap-6">
+        {%- comment -%} Before {%- endcomment -%}
+        <div class="flex items-center justify-center">
+          <div>
+            <p class="mb-4 text-nowrap font-[Spinnaker] text-xl font-bold text-gray-500">
+              You've probably noticed this...
+            </p>
+            <ul class="space-y-2 text-center font-[Spinnaker] text-sm text-gray-500">
+              <div>Tummy acting weird</div>
+              <div>Poop all over the place</div>
+              <div>Gassy after meals</div>
+              <div>Low energy days</div>
+            </ul>
+          </div>
+        </div>
+
+        {%- comment -%} Center stick {%- endcomment -%}
+        <div class="flex flex-col items-center">
+          <div class="flex h-[200px] w-[120px] items-center justify-center">
+            <span class="relative text-center font-[Spinnaker] text-xs text-gray-400">
+              <img src="{{ 'stick2.png' | asset_url }}" alt="">
+              <img src="{{ 'round-arrow.png' | asset_url }}" alt="" class="absolute top-20 left-0 w-[200px]">
+            </span>
+          </div>
+          <p class="mt-2 text-nowrap font-[Cookie] text-[20px] text-[#4F815E]">This is where it changes</p>
+        </div>
+
+        {%- comment -%} After {%- endcomment -%}
+        <div class="flex items-center justify-center">
+          <div>
+            <p class="mb-4 text-nowrap font-[Spinnaker] text-xl font-bold text-[#4F815E]">This is how it should be.</p>
+            <ul class="space-y-4 text-center font-[Spinnaker] text-sm font-semibold text-[#4F815E]">
+              <div>Smooth, easy digestion</div>
+              <div>Consistent, healthy poop</div>
+              <div>More energy, more play</div>
+              <div>Tail that won't stop wagging</div>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-15 flex justify-center">
+        <a href="#shop">
+          <button class="flex cursor-pointer flex-row items-center gap-x-2 rounded-[10px] bg-[#4F815E] px-6 py-3 font-[Talina] text-[26px] font-light leading-[100%] text-white tracking-0%">
+            Pre-order now!
+            {% render 'icon-arrow-right' %}
+          </button>
+        </a>
+      </div>
     </div>
   </div>
 </div>
